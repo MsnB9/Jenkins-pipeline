@@ -1,0 +1,82 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Basic styling */
+body {
+    font-family: 'Lato', sans-serif; /* Use Google Font Lato */
+    background-color: #60b660	; /* Dark blue background */
+    line-height: 1.6;
+    color: #fff; /* White text */
+}
+
+header {
+    background-color: #0d1a26; /* Dark blue background */
+    text-align: center;
+    padding: 2rem 0;
+}
+
+header h1 {
+    font-size: 2rem;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around; /* Evenly space nav links */
+    background-color: #0d1a26; /* Dark blue background */
+    padding: 1rem 0;
+}
+
+nav li {
+    margin-right: 1rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff; /* White text */
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+nav a:hover {
+    color: #42a5f5; /* Light blue on hover */
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+section.info {
+    margin-bottom: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.1rem;
+}
+
+ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+}
+
+footer {
+    text-align: center;
+    background-color: #0d1a26; /* Dark blue background */
+    padding: 1rem 0;
+}
