@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    environment {
-        DOCKERHUB_USERNAME = 'msnb98'
-        DOCKERHUB_PASSWORD = 'Docker1234'
-    }
     stages {
         stage('Clone repository') {
             steps {
@@ -13,7 +9,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('my-webapp:${BUILD_NUMBER}')
+                    docker.build('msnb98/jenkinspipeline:${BUILD_NUMBER}')
                 }
             }
         }
@@ -21,7 +17,7 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub_credentials') {
-                        docker.image('my-webapp:${BUILD_NUMBER}').push()
+                        docker.image('msnb98/jenkinspipeline:${BUILD_NUMBER}').push()
                     }
                 }
             }
