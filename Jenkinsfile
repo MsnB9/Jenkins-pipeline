@@ -9,7 +9,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    docker.build('msnb98/jenkinspipeline:${BUILD_NUMBER}')
+                    docker.build('msnb98/jenkinspipeline:${latest}')
                 }
             }
         }
@@ -17,10 +17,11 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub_credentials') {
-                        docker.image('msnb98/jenkinspipeline:${BUILD_NUMBER}').push()
+                        docker.image('msnb98/jenkinspipeline:${latest}').push()
                     }
                 }
             }
         }
     }
 }
+
