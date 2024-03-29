@@ -1,24 +1,30 @@
 pipeline {
     agent any
+    environment {
+        DOCKERHUB_USERNAME = 'msnb98'
+        DOCKERHUB_PASSWORD = 'Docker1234'
+    }
     stages {
-        stage('Build') {
+        stage('Clone repository') {
             steps {
-                sh 'echo Building...'
-                // Commands to build your project
+                git 'https://github.com/MsnB9/Jenkins-pipeline.git'
             }
         }
-        stage('Test') {
+        stage('Build Docker Image') {
             steps {
-                sh 'echo Testing...'
-                // Commands to test your project
+                script {
+                    docker.build('my-webapp:${BUILD_NUMBER}')
+                }
             }
         }
-        stage('Deploy') {
+        stage('Push to Docker Hub') {
             steps {
-                sh 'echo Deploying...'
-                // Commands to deploy your project
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub_credentials') {
+                        docker.image('my-webapp:${BUILD_NUMBER}').push()
+                    }
+                }
             }
         }
     }
 }
-
